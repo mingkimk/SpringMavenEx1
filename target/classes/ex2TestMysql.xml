@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="phoneConn" class="com.human.ex2Test.MysqlConnectCfg">
+		<constructor-arg><value>com.mysql.jdbc.Driver</value></constructor-arg>
+		<constructor-arg><value>root</value></constructor-arg>
+		<constructor-arg><value>jdbc:mysql://localhost/kkk</value></constructor-arg>
+		<constructor-arg><value>apmsetup</value></constructor-arg>
+	</bean>
+	
+	<bean id="memberConn" class="com.human.ex2Test.MysqlConnectCfg">
+		<constructor-arg><value>com.mysql.jdbc.Driver</value></constructor-arg>
+		<constructor-arg><value>root</value></constructor-arg>
+		<constructor-arg><value>jdbc:mysql://localhost/hm_member</value></constructor-arg>
+		<constructor-arg><value>apmsetup</value></constructor-arg>
+	</bean>
+	
+	<bean id="phoneDAO" class="com.human.ex2Test.PhoneDao">
+		<constructor-arg><ref bean="phoneConn"></ref></constructor-arg>
+	</bean>
+	
+	<bean id="phoneAdmin" class="com.human.ex2Test.PhoneAdmin">
+		<property name="myDao" ref="phoneDAO"></property>
+	</bean>
+	
+	<bean id="phone" class="com.human.ex2Test.Phone" scope="prototype"></bean>
+	
+</beans>

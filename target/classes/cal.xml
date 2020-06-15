@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="addCal" class="com.human.cal.CalA">
+	</bean>
+	<bean id="miCal" class="com.human.cal.CalM">
+	</bean>
+	<bean id="calCenterA" class="com.human.cal.CalCenter">
+		<property name="a" value="10"></property>
+		<property name="b" value="20"></property>
+		<property name="myCal">
+			<ref bean="addCal" />
+		</property>
+	</bean>
+	
+	<bean id="member" class="com.human.cal.Member" scope="prototype"></bean>
+</beans>
